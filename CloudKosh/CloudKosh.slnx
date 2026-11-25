@@ -1,0 +1,4 @@
+<Solution>
+  <Project Path="CloudKosh/CloudKosh.csproj" />
+  <Project Path="CloudKoshCli/CloudKoshCli.csproj" />
+</Solution>
