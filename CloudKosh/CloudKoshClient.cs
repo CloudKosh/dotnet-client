@@ -68,7 +68,7 @@ public class CloudKoshClient
 
     public async Task<FileHeaders> DownloadAsync(string key, Stream stream)
     {
-        var body = await RequestBuilder.Get($"namespaces/{@namespace}/{bucket}/{key}")
+        var body = await RequestBuilder.Get($"files/{@namespace}/{bucket}/{key}")
             .AsResponseMessageAsync(client);
         await body.Content.CopyToAsync(stream);
         
@@ -91,7 +91,7 @@ public class CloudKoshClient
 
         using var fs2 = File.OpenRead(tmp);
 
-        await RequestBuilder.Post($"namespaces/{@namespace}/{bucket}/{key}")
+        await RequestBuilder.Post($"files/{@namespace}/{bucket}/{key}")
             .Multipart("sha256Base64", sha256Base64)
             .MultipartFile("file", fs2, "file.dat", contentType)
             .AsJsonAsync<LoginResponse>(client);
